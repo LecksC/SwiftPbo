@@ -142,7 +142,9 @@ namespace SwiftPbo
                 }
                 filename[i] = ((Char)(Math.Min(90, 65 + ch % 5)));
             }
-            return Path.Combine(builder.ToString(), new string(filename));
+            var pathParts = builder.ToString().Split(new[] { '\\', '/' }).ToList();
+            pathParts.Add(new string(filename));
+            return Path.Combine(pathParts.ToArray());
         }
 
         private static List<char> _literalList = new List<char>() {'\'','\"','\\','\0','\a','\b','\f','\n','\r','\t','\v'};
