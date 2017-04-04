@@ -247,7 +247,7 @@ namespace SwiftPbo
             }
         }
 
-        public PboArchive(string path, bool close = true)
+        public PboArchive(string path, bool close = true, bool readSafeFileNames = false)
         {
             if (!File.Exists(path))
                 throw new FileNotFoundException("File not Found");
@@ -259,7 +259,7 @@ namespace SwiftPbo
                 _stream.Position = 0;
             while (true)
             {
-                if (!ReadEntry(_stream))
+                if (!ReadEntry(_stream, readSafeFileNames))
                     break;
             }
             _dataStart = _stream.Position;
@@ -306,10 +306,10 @@ namespace SwiftPbo
             get { return _dataStart; }
         }
 
-        private bool ReadEntry(FileStream stream)
+        private bool ReadEntry(FileStream stream, bool readSafeFileNames)
         {
             var file = PboUtilities.ReadStringArray(stream);
-            var filename = Encoding.UTF8.GetString(file).Replace("\t","\\t");
+            var filename = PboUtilities.EncodeFilePath(file, readSafeFileNames);
 
             var packing = PboUtilities.ReadLong(stream);
 
