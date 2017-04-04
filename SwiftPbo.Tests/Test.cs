@@ -129,7 +129,7 @@ namespace SwiftPbo.Tests
                 var files = new Dictionary<FileEntry, string>();
                 foreach (var entry in pboArchive.Files)
                 {
-                    string outfile = Path.Combine(tempFolder, GetFileName(entry));
+                    string outfile = PboArchive.SterilizePath(Path.Combine(tempFolder, GetFileName(entry)));
                     Console.WriteLine("Creating/adding " + outfile);
                     files.Add(new FileEntry(entry.FileName,
                         GetPackingMethod(entry.PackingMethod),
