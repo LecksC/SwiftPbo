@@ -13,13 +13,7 @@ namespace SwiftPbo
         {
             if (useSafeFileNames)
             {
-                var name = Encoding.ASCII.GetString(rawName);
-                // Unlikely these will be used, but best to check.
-                foreach(char c in "\"><?|*")
-                {
-                    name = name.Replace(c, '_');
-                }
-                return name;
+                return  System.Uri.EscapeDataString(Encoding.ASCII.GetString(rawName).Replace("\t", "\\t"));
             }
             else
             {
