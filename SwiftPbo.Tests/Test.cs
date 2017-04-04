@@ -21,6 +21,7 @@ namespace SwiftPbo.Tests
                 return Path.GetDirectoryName(path);
             }
         }
+
         public static string TestFolder
         {
             get
@@ -28,6 +29,7 @@ namespace SwiftPbo.Tests
                 return Path.Combine(AssemblyDirectory, "testdata");
             }
         }
+
         private byte[] _checksum;
         [SetUp]
         protected void SetUp()
@@ -44,9 +46,8 @@ namespace SwiftPbo.Tests
         public void OpenArchiveTest()
         {
             var pboArchive = new PboArchive(Path.Combine(TestFolder, "cba_common.pbo"));
+
             Assert.That(pboArchive.Files.Count == 113);
-
-
 
             Assert.That(pboArchive.Checksum.SequenceEqual(_checksum), "Checksum dosen't match");
 
@@ -93,8 +94,6 @@ namespace SwiftPbo.Tests
                 files.Add(entry, info.FullName);
             }
 
-
-
             PboArchive.Clone(Path.Combine(TestFolder, "clone_common.pbo"), pboArchive.ProductEntry, files, pboArchive.Checksum);
 
             var cloneArchive = new PboArchive(Path.Combine(TestFolder, "clone_common.pbo"));
@@ -119,8 +118,6 @@ namespace SwiftPbo.Tests
             {
                 string pboName = Path.GetFileName(pboPath);
                 var pboArchive = new PboArchive(Path.Combine(TestFolder, pboName));
-
-
                 var pboNameNoExt = pboName.Substring(0, pboName.Length - 4);
                 string tempFolder = Path.Combine(TestFolder, pboNameNoExt);
                 string outPath = Path.Combine(outFolder, pboNameNoExt + "_clone.pbo");
@@ -133,7 +130,6 @@ namespace SwiftPbo.Tests
                 foreach (var entry in pboArchive.Files)
                 {
                     string outfile = Path.Combine(tempFolder, GetFileName(entry));
-
                     Console.WriteLine("Creating/adding " + outfile);
                     files.Add(new FileEntry(entry.FileName,
                         GetPackingMethod(entry.PackingMethod),
@@ -143,7 +139,6 @@ namespace SwiftPbo.Tests
                         entry.Unknown),
                         outfile);
                 }
-
 
                 // Clone the PBO
                 PboArchive.Clone(outPath, pboArchive.ProductEntry, files, pboArchive.Checksum);
@@ -160,11 +155,10 @@ namespace SwiftPbo.Tests
         public string GetFileName(FileEntry entry)
         {
             return Path.Combine(entry.FileName.Split(new[] { '\\', '/' }));
-
         }
+
         public ulong GetPackingMethod(PackingType type)
         {
-
             switch (type)
             {
                 case PackingType.Packed:
