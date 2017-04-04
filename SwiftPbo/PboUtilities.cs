@@ -8,12 +8,10 @@ using System.Text;
 namespace SwiftPbo
 {
     internal static class PboUtilities
-    {
-        public static bool UseAsciiFileNames { get; set; } = false;
-
+    { 
         public static string EncodeFilePath(byte[] rawName, bool useSafeFileNames)
         {
-            if (UseAsciiFileNames)
+            if (useSafeFileNames)
             {
                 var name = Encoding.ASCII.GetString(rawName);
                 // Unlikely these will be used, but best to check.
