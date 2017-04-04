@@ -9,6 +9,25 @@ namespace SwiftPbo
 {
     internal static class PboUtilities
     {
+        public static bool UseAsciiFileNames { get; set; } = false;
+
+        public static string EncodeFilePath(byte[] rawName, bool useSafeFileNames)
+        {
+            if (UseAsciiFileNames)
+            {
+                var name = Encoding.ASCII.GetString(rawName);
+                // Unlikely these will be used, but best to check.
+                foreach(char c in "\"><?|*")
+                {
+                    name = name.Replace(c, '_');
+                }
+                return name;
+            }
+            else
+            {
+                return Encoding.UTF8.GetString(rawName).Replace("\t", "\\t");
+            }
+        }
         public static ulong ReadLong(Stream reader)
         {
             var buffer = new byte[4];
