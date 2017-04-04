@@ -60,8 +60,9 @@ namespace SwiftPbo
             DataSize = datasize;
             Unknown = unknown;
         }
-        public FileEntry(string filename, ulong type, ulong osize, ulong timestamp, ulong datasize, ulong unknown = 0x0)
+        public FileEntry(string filename, ulong type, ulong osize, ulong timestamp, ulong datasize, ulong unknown = 0x0, byte[] orgName = null)
         {
+            OrgName = orgName;
             _fileName = filename;
             switch (type)
             {

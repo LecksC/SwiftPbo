@@ -136,7 +136,8 @@ namespace SwiftPbo.Tests
                         entry.OriginalSize,
                         entry.TimeStamp,
                         entry.DataSize,
-                        entry.Unknown),
+                        entry.Unknown,
+                        entry.OrgName),
                         outfile);
                 }
 
