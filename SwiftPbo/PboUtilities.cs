@@ -13,7 +13,7 @@ namespace SwiftPbo
         {
             if (useSafeFileNames)
             {
-                return Encoding.UTF7.GetString(rawName).Replace("\t", "\\t");
+                return Path.Combine(Encoding.UTF8.GetString(rawName).Replace("\t", "\\t").Split(new[] {'\\', '/' }));
             }
             else
             {
