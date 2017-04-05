@@ -1,9 +1,7 @@
 language: csharp
-solution: SwiftPbo.sln
+dotnet: 1.0.1
 install:
-  - nuget install NUnit.Runners -OutputDirectory testrunner -Version 3.6.1
-  - nuget restore SwiftPbo.sln
-script:
   - dotnet restore
   - dotnet build
+script:
   - dotnet test
