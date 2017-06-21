@@ -153,6 +153,7 @@ namespace SwiftPbo.Standard.Tests
 
         public string GetFileName(FileEntry entry)
         {
+            return SwiftPbo.Standard.PboArchive.SterilizePath(entry.FileName);
             return Path.Combine(entry.FileName.Split(new[] { '\\', '/' }));
         }
         public void AssertFilesEqual(string actual, string expected)

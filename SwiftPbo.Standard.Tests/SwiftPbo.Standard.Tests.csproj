@@ -44,7 +44,7 @@
 
   <ItemGroup>
     <None Update="testdata\cba_common.pbo">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="testdata\cba_common\%24MIKERO%24">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -373,8 +373,11 @@
     <None Update="testdata\cba_common\XEH_preInit.sqf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="testdata\rhs_t72_encoding_issue.pbo">
+    <None Update="testdata\fow_anims_c.pbo">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="testdata\rhs_t72_encoding_issue.pbo">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

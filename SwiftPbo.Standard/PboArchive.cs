@@ -119,7 +119,7 @@ namespace SwiftPbo.Standard
 
         public static String SterilizePath(String path)
         {
-
+            path = path.Replace("\\t", "T");
             var arr = Path.GetDirectoryName(path).ToCharArray();
             var builder = new StringBuilder(arr.Count());
             string dirpath = Path.GetDirectoryName(path);
@@ -381,7 +381,7 @@ namespace SwiftPbo.Standard
                 files++;
                 long totalread = (long)file.DataSize;
                 var pboPath =
-                    SterilizePath(Path.Combine(outpath, file.FileName));
+                    Path.Combine(outpath, SterilizePath(file.FileName));
                 if (!Directory.Exists(Path.GetDirectoryName(pboPath)))
                     Directory.CreateDirectory(Path.GetDirectoryName(pboPath));
                 using (var outfile = File.Create(pboPath))

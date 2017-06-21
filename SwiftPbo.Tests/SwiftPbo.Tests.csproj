@@ -384,6 +384,10 @@
     <None Include="testdata\cba_common\XEH_preInit.sqf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="testdata\fow_anims_c.pbo">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="testdata\fow_anims_c.pbo.fow_07_06_2017.bisign" />
     <None Include="testdata\rhs_t72_encoding_issue.pbo">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
